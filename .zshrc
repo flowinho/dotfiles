@@ -36,7 +36,7 @@ alias ls='exa --icons -la -l -h'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 # tar.gz + pigz Compression alias "best of all worlds"
-alias compress='tar --use-compress-program="pigz --best --recursive | pv -p -t -e" -cf archive.tar.gz'
+alias compress='tar --use-compress-program="pigz --best --recursive | pv" -cf archive.tar.gz'
 
 # Compress using the above alias and pass file to gpg to encrypt it using a key.
 # First parameter: Source file(s)
