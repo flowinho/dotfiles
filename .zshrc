@@ -38,6 +38,11 @@ alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %
 # tar.gz + pigz Compression alias "best of all worlds"
 alias compress='tar --use-compress-program="pigz --best --recursive | pv" -cf archive.tar.gz'
 
+# macOS alias version of compress
+if [[ $OSTYPE == darwin* ]]; then
+    alias compress='tar --use-compress-program="pigz" -cf archive.tar.gz'
+fi
+
 # Compress using the above alias and pass file to gpg to encrypt it using a key.
 # First parameter: Source file(s)
 # Second parameter: Recipient key
