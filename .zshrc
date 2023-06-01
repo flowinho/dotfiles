@@ -48,7 +48,8 @@ fi
 # Second parameter: Recipient key
 alias compressEncrypt='e(){ tar --use-compress-program="pigz --best --recursive | pv -p -t -e" -cf - $1 | gpg -ear $2 > $1.tar.gz.gpg };e'
 
-
+# GIT related aliassses
+alias gFetch='git fetch && git branch -avv'
 
 
 export PATH="$HOME/.rbenv/bin:$PATH"
