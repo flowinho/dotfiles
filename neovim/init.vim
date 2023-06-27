@@ -64,3 +64,6 @@ nnoremap <C-f> :NERDTreeFocus<CR>		" FocusNerdtree using CTRL + F
 nnoremap <C-n> :NERDTree<CR>			" Open NerdTree using CTRL + N
 nnoremap <C-t> :NERDTreeToggle<CR>		" Toggle NerdTree using CTRL + t
 
+" -----------------------------
+" Plugin specific settings
+let NERDTreeShowHidden=1
