@@ -15,6 +15,9 @@
 " https://github.com/junegunn/vim-plug
 call plug#begin()
 
+" Installation: Add a plug here, then execute :PlugInstall
+" Removal: Remove the plug, then execute :PlugClean
+"
 Plug 'vim-airline/vim-airline'			" Displays a line with a bunch of information on the bottom.
 Plug 'preservim/nerdtree'				" Sidebar with collapsable folders and files
 Plug 'tpope/vim-commentary'				" For Commenting gcc & gc
