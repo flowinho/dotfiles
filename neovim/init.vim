@@ -49,7 +49,6 @@ call plug#end()
 :set softtabstop=4		" Convert softtabs into four spaces.
 :set mouse=a			" Enables selection using the mouse (if needed).
 :set nobackup			" Disable swapfiles.
-:set nowrap				" Do not wrap lines.
 :set incsearch			" Enable search for next occurence of search term
 :set hlsearch			" Highlight the string that is searched for.
 
