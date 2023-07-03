@@ -29,8 +29,9 @@ Plug 'tc50cal/vim-terminal'				" Vim Terminal
 Plug 'terryma/vim-multiple-cursors'		" CTRL + N for multiple cursors
 Plug 'preservim/tagbar'					" Tagbar for code navigation
 Plug 'dracula/vim'						" Best colortheme
+Plug 'mg979/vim-visual-multi'			" Good multicursor support (like CTRL+D in VSCode)
 
-call plug#end()
+calg plug#end()
 " End the section of installed plugins using vim-plug
 " ---------------------------------------------------------------------
 
