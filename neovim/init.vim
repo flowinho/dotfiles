@@ -31,7 +31,7 @@ Plug 'preservim/tagbar'					" Tagbar for code navigation
 Plug 'dracula/vim'						" Best colortheme
 Plug 'mg979/vim-visual-multi'			" Good multicursor support (like CTRL+D in VSCode)
 
-calg plug#end()
+call plug#end()
 " End the section of installed plugins using vim-plug
 " ---------------------------------------------------------------------
 
@@ -52,6 +52,8 @@ calg plug#end()
 :set nobackup			" Disable swapfiles.
 :set incsearch			" Enable search for next occurence of search term
 :set hlsearch			" Highlight the string that is searched for.
+:set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+:set list
 
 au ColorScheme * hi Normal ctermbg=None		" Disable background color for all color-schemes
 :colorscheme dracula						" Requires plugin
