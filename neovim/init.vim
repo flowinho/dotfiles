@@ -30,6 +30,7 @@ Plug 'terryma/vim-multiple-cursors'		" CTRL + N for multiple cursors
 Plug 'preservim/tagbar'					" Tagbar for code navigation
 Plug 'dracula/vim'						" Best colortheme
 Plug 'mg979/vim-visual-multi'			" Good multicursor support (like CTRL+D in VSCode)
+Plug 'preservim/vim-markdown'
 
 call plug#end()
 " End the section of installed plugins using vim-plug
@@ -56,8 +57,9 @@ call plug#end()
 :set list
 
 au ColorScheme * hi Normal ctermbg=None		" Disable background color for all color-schemes
-:colorscheme dracula						" Requires plugin
 
+
+:colorscheme dracula						" Requires plugin
 
 "---------------------------------------------
 " Custom Keyboard Mapping Definitions

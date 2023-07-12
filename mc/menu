@@ -1,0 +1,38 @@
+#
+# ▒█▀▀▀ █░░ █▀▀█ █▀▀█ ░▀░ █▀▀█ █▀▀▄ 　 ▒█▀▀▀█ █▀▀ █░░█ █░░█ ▀▀█▀▀ ▀▀█▀▀ █░█ █▀▀█ █░░░█ █▀▀ █░█ ░▀░ 
+# ▒█▀▀▀ █░░ █░░█ █▄▄▀ ▀█▀ █▄▄█ █░░█ 　 ░▀▀▀▄▄ █░░ █▀▀█ █░░█ ░░█░░ ░░█░░ █▀▄ █░░█ █▄█▄█ ▀▀█ █▀▄ ▀█▀ 
+# ▒█░░░ ▀▀▀ ▀▀▀▀ ▀░▀▀ ▀▀▀ ▀░░▀ ▀░░▀ 　 ▒█▄▄▄█ ▀▀▀ ▀░░▀ ░▀▀▀ ░░▀░░ ░░▀░░ ▀░▀ ▀▀▀▀ ░▀░▀░ ▀▀▀ ▀░▀ ▀▀▀
+#
+#                          Copyright 2023 Florian Schuttkowski, Licensed GPL3
+#                    For additional information, visit https://github.com/flowinho
+#
+# ======================%%========================%%==========================%%=====================
+	
+1	Compress the current subdirectory (PIGZ)
+	Pwd=`basename %d /`
+	echo -n "Name of the compressed file w/o extension: [$Pwd]: "
+	read tar
+	[ "$tar"x = x ] && tar="$Pwd"
+    cd .. && \
+	tar --use-compress-program="pigz --best --recursive" -cvf $tar.tar.gz $Pwd \
+	echo "../$tar.tar.gz" created.
+
+2	Compress & encrypt the current subdirectory (PIGZ+GPG)
+	Pwd=`basename %d /`
+	echo -n "Name of the compressed file w/o extension: [$Pwd]: "
+	read tar
+	[ "$tar"x = x ] && tar="$Pwd"
+	echo -n "Recipient mail adress: [mail@florian-s.org]: "
+	read recp
+	[ "$recp"x = x ] && recp="mail@florian-s.org"
+	cd .. && \
+	tar --use-compress-program="pigz --best --recursive" -cvf $tar.tar.gz $Pwd && \
+	gpg -ear $recp -o $tar.tar.gz.gpg $tar.tar.gz && \
+	rm $tar.tar.gz && \
+	echo "../$tar.tar.gz.asc" created.
+
+3	Analyze store of current directory
+	ncdu %d
+
+4	Find duplicates in current directory
+	rmlint %d

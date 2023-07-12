@@ -57,6 +57,8 @@ alias gFetch='git fetch && git branch -avv'
 # Fast directory switching
 alias cdr='cd ~/Repositories'
 
+# Add flutter to system path
+export PATH="$PATH:$HOME/Flutter/bin"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
