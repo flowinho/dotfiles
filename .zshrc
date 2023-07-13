@@ -53,6 +53,7 @@ alias compressEncrypt='e(){ tar --use-compress-program="pigz --best --recursive 
 
 # GIT related aliassses
 alias gFetch='git fetch && git branch -avv'
+alias gUpdate='find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c "cd '{}' && pwd && git fetch && git pull" \;'
 
 # Fast directory switching
 alias cdr='cd ~/Repositories'
