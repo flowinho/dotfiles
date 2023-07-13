@@ -52,7 +52,18 @@ if [ -d "$DIR" ]; then
   echo "$DIR already exists -- backing up, please delete manually."
   mv "$DIR" "$DIR_BAK"
 fi
-ln -s ~/Repositories/mc ~/.config/mc
+ln -s ~/Repositories/dotfiles/mc ~/.config/mc
+echo "-- Done"
+
+echo "Linking kitty config"
+mkdir -p ~/.config/
+DIR="~/.config/kitty"
+if [ -d "$DIR" ]; then
+  # Take action if $DIR exists. #
+  echo "$DIR already exists -- backing up, please delete manually."
+  mv "$DIR" "$DIR_BAK"
+fi
+ln -s ~/Repositories/dotfiles/kitty ~/.config/kitty
 echo "-- Done"
 
 echo "Linking Midnight Commander skin"
@@ -62,7 +73,7 @@ if [[ -f "$FILE" ]]; then
     echo "$FILE exists -- backing up, please delete manually."
 	mv "$FILE" "$FILE.BAK"
 fi
-ln -s ~/Repositories/mc/dracula.ini ~/.local/share/mc/skins/dracula.ini
+ln -s ~/Repositories/dotfiles/mc/dracula.ini ~/.local/share/mc/skins/dracula.ini
 echo "-- Done"
 
 echo "Linking NeoVim Config"

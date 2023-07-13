@@ -51,6 +51,13 @@ fi
 # Second parameter: Recipient key
 alias compressEncrypt='e(){ tar --use-compress-program="pigz --best --recursive | pv -p -t -e" -cf - $1 | gpg -ear $2 > $1.tar.gz.gpg };e'
 
+# First command every day macOS
+if [[ $OSTYPE == darwin* ]]; then
+    alias daily='brew update && brew upgrade && cdr && gUpdate' 
+fi
+
+
+
 # GIT related aliassses
 alias gFetch='git fetch && git branch -avv'
 alias gUpdate='find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c "cd '{}' && pwd && git fetch && git pull" \;'
