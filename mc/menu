@@ -39,22 +39,36 @@
 		echo "$name.tar.gz" created.
 	done
 
-4	Decompress tar.gz to current directory
+4	Compress and encrypt tagged files into separate archives (PIGZ+GPG)
+	echo -n "Recipient mail adress: [mail@florian-s.org]: "
+	read recp
+	[ "$recp"x = x ] && recp="mail@florian-s.org"
+	for i in %t
+	do
+		
+		name=`basename "$i"`
+		tar --use-compress-program="pigz --best --recursive" -cvf $name.tar.gz $i && \
+		gpg -ear $recp -o $name.tar.gz.gpg $name.tar.gz && \
+		rm $name.tar.gz && \
+		echo "$name.tar.gz" created.
+	done
+
+5	Decompress tar.gz to current directory
 	tar -xvzf %s
 
-5	Analyze store of current directory
+6	Analyze store of current directory
 	ncdu %d
 
-6	Find duplicates in current directory
+7	Find duplicates in current directory
 	rmlint %d
 
-7	Open current file(s) in NeoVIM	
+8	Open current file(s) in NeoVIM	
 	nvim %s
 
-8	Open current directory in system file-manager
+9	Open current directory in system file-manager
 	xdg-open %d
 
-9	Open current file(s) in system application
+10	Open current file(s) in system application
 	xdg-open %s
 
 
