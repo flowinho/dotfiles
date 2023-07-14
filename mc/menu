@@ -14,7 +14,7 @@
 	read tar
 	[ "$tar"x = x ] && tar="$Pwd"
     cd .. && \
-	tar --use-compress-program="pigz --best --recursive" -cvf $tar.tar.gz $Pwd \
+	tar --use-compress-program="pigz --best --recursive" -cvf $tar.tar.gz $Pwd && \
 	echo "../$tar.tar.gz" created.
 
 2	Compress & encrypt the current subdirectory (PIGZ+GPG)
@@ -31,17 +31,39 @@
 	rm $tar.tar.gz && \
 	echo "../$tar.tar.gz.asc" created.
 
-3	Analyze store of current directory
+3	Compress tagged files into separate archives (PIGZ)
+	for i in %t
+	do
+		name=`basename "$i"`
+		tar --use-compress-program="pigz --best --recursive" -cvf $name.tar.gz $i && \
+		echo "$name.tar.gz" created.
+	done
+
+4	Decompress tar.gz to current directory
+	tar -xvzf %s
+
+5	Analyze store of current directory
 	ncdu %d
 
-4	Find duplicates in current directory
+6	Find duplicates in current directory
 	rmlint %d
 
-5	Open current file(s) in NeoVIM	
+7	Open current file(s) in NeoVIM	
 	nvim %s
 
+8	Open current directory in system file-manager
+	xdg-open %d
+
+9	Open current file(s) in system application
+	xdg-open %s
+
+
 # Helper Notes
-# 
+#
+# filename=$(basename -- "%s")
+# extension="${filename##*.}"
+# filename="${filename%.*}"
+# echo -n "extension detected [$extension], filename is [$filename]"
 ##############################################################################
 #   %%  The % character
 #   %f  The current file (if non-local vfs, file will be copied locally and

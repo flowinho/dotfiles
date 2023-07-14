@@ -65,6 +65,8 @@ alias gUpdate='find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c "cd '{}'
 # Fast directory switching
 alias cdr='cd ~/Repositories'
 
+# Fast renaming
+alias spaceToUnderscores='for file in *; do mv -- "$file" "${file// /_}";done'
 
 # Add flutter to system path
 export PATH="$PATH:$HOME/Flutter/bin"

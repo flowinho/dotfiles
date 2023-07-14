@@ -17,13 +17,6 @@ then
     exit
 fi
 
-if ! command -v p10k &> /dev/null
-then
-    echo "Powerline10k could not be found! Exiting."
-    exit
-fi
-echo " -- Done"
-
 echo "Linking the config files"
 
 echo "Linking powershell10k config"
