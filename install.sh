@@ -25,7 +25,7 @@ if [[ -f "$FILE" ]]; then
     echo "$FILE exists -- backing up, please delete manually."
 	mv "$FILE" "$FILE.BAK"
 fi
-ln -s ~/Repositories/dotfiles/p10k.zsh ~/.p10k.zsh
+ln -s ~/Repositories/dotfiles/.p10k.zsh ~/.p10k.zsh
 echo "-- Done"
 
 echo "Linking zshell"
