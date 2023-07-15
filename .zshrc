@@ -32,8 +32,12 @@ transfer(){ if [ $# -eq 0 ];then echo "No arguments specified.\nUsage:\n transfe
 # Remap vim to nvim
 alias vim='nvim'
 
+# Better search within files
+alias search='rg -i'
+
 # Remap ls to use exa
 alias ls='exa --icons -la -l -h'
+alias tree='exa --tree --icons -la -l -h'
 
 # Better git log, use -p to see changed lines
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
@@ -61,6 +65,8 @@ fi
 # GIT related aliassses
 alias gFetch='git fetch && git branch -avv'
 alias gUpdate='find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c "cd '{}' && pwd && git fetch && git pull" \;'
+alias gPrepareForBackup='find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c "cd '{}' && pwd && rm -rf .git" \;'
+
 
 # Fast directory switching
 alias cdr='cd ~/Repositories'
