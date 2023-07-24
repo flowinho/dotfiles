@@ -55,6 +55,7 @@ call plug#end()
 :set hlsearch			" Highlight the string that is searched for.
 :set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 :set list
+:set clipboard+=unnamedplus
 
 au ColorScheme * hi Normal ctermbg=None		" Disable background color for all color-schemes
 
