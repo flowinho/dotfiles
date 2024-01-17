@@ -15,7 +15,6 @@ echo "Linking brewfile from repository"
 ln -s ~/Repositories/dotfiles/Brewfile ~/Brewfile
 brew bundle install
 
-
 echo "Initial check if all required programs are installed... (this could fail on macOS)"
 
 if ! command -v mc &> /dev/null
