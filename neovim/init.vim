@@ -53,6 +53,7 @@ call plug#end()
 :set nobackup			" Disable swapfiles.
 :set incsearch			" Enable search for next occurence of search term
 :set hlsearch			" Highlight the string that is searched for.
+:set nofoldenable		" Disable automatic code-folding alltogether (as it hinders me more than it helps).
 :set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 :set list
 :set clipboard+=unnamedplus
