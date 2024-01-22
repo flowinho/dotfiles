@@ -1,49 +1,47 @@
-#
-# ▒█▀▀▀ █░░ █▀▀█ █▀▀█ ░▀░ █▀▀█ █▀▀▄ 　 ▒█▀▀▀█ █▀▀ █░░█ █░░█ ▀▀█▀▀ ▀▀█▀▀ █░█ █▀▀█ █░░░█ █▀▀ █░█ ░▀░ 
-# ▒█▀▀▀ █░░ █░░█ █▄▄▀ ▀█▀ █▄▄█ █░░█ 　 ░▀▀▀▄▄ █░░ █▀▀█ █░░█ ░░█░░ ░░█░░ █▀▄ █░░█ █▄█▄█ ▀▀█ █▀▄ ▀█▀ 
-# ▒█░░░ ▀▀▀ ▀▀▀▀ ▀░▀▀ ▀▀▀ ▀░░▀ ▀░░▀ 　 ▒█▄▄▄█ ▀▀▀ ▀░░▀ ░▀▀▀ ░░▀░░ ░░▀░░ ▀░▀ ▀▀▀▀ ░▀░▀░ ▀▀▀ ▀░▀ ▀▀▀
-#
-#                          Copyright 2023 Florian Schuttkowski, Licensed GPL3
-#                    For additional information, visit https://github.com/flowinho
-#
-# ======================%%========================%%==========================%%=====================
-
-# Confiuration Options for Homebrew
-cask_args appdir: '~/Applications', require_sha: true
-
-## CLI Tools
-
-brew 'git'                      # Many OS bring outdated versions of git with them.
-brew 'vim'                      # Many OS bring outdated version of vim with them.
-brew 'exa'                      # Better ls
-brew 'btop'                     # Best resource usage monitor.
-brew 'fzf'                      # Fuzzy find.
-brew 'gh'                       # Official GitHub Commandline integration.
-brew 'gnupg'                    # Many OS bring outdated versions of gnugpg with them.
-brew 'magic-wormhole'           # Fast peer-to-peer file transfer.
-brew 'midnight-commander'       # Powerful cli-based file-manager.
-brew 'ncdu'                     # Disk space analyzer.  
-brew 'p7zip'                    # 7Zip implementation
-brew 'pandoc'                   # Markdown to any document.
-brew 'rmlint'                   # Search for duplicate files and remove them.
-brew 'starship'                 # Great addition to any terminal.
-brew 'tmux'                     # Defacto standard terminal multiplexer.
-brew 'tree'                     # List directories and their subdirectories as trees.
-brew 'wget'                     # Download files.
-brew 'gping'                    # Like ping, but better.
-
-## Casks
-
-cask 'iterm2'                   # Nice terminal emulator.
-cask 'visual-studio-code'       # Code editor.
-cask 'firefox'                  # Browser
-cask 'brave'                    # Browser
-cask 'font-fira-code'           # Font with ligatures
-cask 'font-hack'                #
-cask 'font-inconsolata'         #
-cask 'font-meslo-lg-nerd-font'  # Good font for zsh-theme powerline10k
-cask 'appcleaner'               # Clean uninstall of macos apps.
-cask 'fluid'                    # Turn websites into apps
-cask 'keepassxc'                # Password manager
-cask 'mactex'                   # LaTeX
-cask 'xcodes'                   # Xcode version manager and updater
+tap "dracula/install"
+tap "homebrew/bundle"
+brew "btop"
+brew "duf"
+brew "exa"
+brew "ffmpeg"
+brew "fzf"
+brew "gh"
+brew "git"
+brew "gnupg"
+brew "gping"
+brew "magic-wormhole"
+brew "mas"
+brew "midnight-commander"
+brew "ncdu"
+brew "neovim"
+brew "p7zip"
+brew "pandoc"
+brew "pigz"
+brew "python@3.11"
+brew "rbenv"
+brew "rclone"
+brew "rmlint"
+brew "scc"
+brew "starship"
+brew "tmux"
+brew "transmission-cli"
+brew "tree"
+brew "vim"
+brew "wget"
+brew "yt-dlp"
+cask "appcleaner", args: { appdir: "~/Applications" }
+cask "firefox"
+cask "fluid", args: { appdir: "~/Applications" }
+cask "iterm2"
+cask "keepassxc"
+cask "macfuse"
+cask "mactex"
+cask "obsidian"
+cask "visual-studio-code"
+cask "xcodes"
+vscode "bierner.markdown-mermaid"
+vscode "dracula-theme.theme-dracula"
+vscode "eamodio.gitlens"
+vscode "MS-CEINTL.vscode-language-pack-de"
+vscode "tomoki1207.pdf"
+vscode "yzhang.markdown-all-in-one"
