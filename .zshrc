@@ -54,6 +54,7 @@ fi
 # First parameter: Source file(s)
 # Second parameter: Recipient key
 alias compressEncrypt='e(){ tar --use-compress-program="pigz --best --recursive | pv -p -t -e" -cf - $1 | gpg -ear $2 > $1.tar.gz.gpg };e'
+alias pandocPDF='e(){ bash ~/pandocSimple/pandoc.sh $1 $2 };e'
 
 # First command every day macOS
 if [[ $OSTYPE == darwin* ]]; then
