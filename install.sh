@@ -3,6 +3,18 @@
 # What is needed to make this script work?
 # - All Repositories should be in ~/Repositories (this is what is asssumed).
 #
+echo "Linking brewfile and running brew"
+echo "Checking for brew,..."
+if ! command -v brew &> /dev/null
+then
+	echo "Homebrew not found! Exiting."
+	exit
+fi
+
+echo "Linking brewfile from repository"
+ln -s ~/Repositories/dotfiles/Brewfile ~/Brewfile
+brew bundle install
+
 echo "Initial check if all required programs are installed... (this could fail on macOS)"
 
 if ! command -v mc &> /dev/null
@@ -46,6 +58,12 @@ if [ -d "$DIR" ]; then
   mv "$DIR" "$DIR_BAK"
 fi
 ln -s ~/Repositories/dotfiles/mc ~/.config/mc
+echo "-- Done"
+
+echo "Linking Midnight Commander theme"
+mkdir -p ~/.local/share/mc/skins
+ln -s ~/Repositories/dotfiles/mc/dracula.ini ~/.local/share/mc/skins/dracula.ini
+ln -s ~/Repositories/dotfiles/mc/dracula256.ini ~/.local/share/mc/skins/dracula256.ini
 echo "-- Done"
 
 echo "Linking kitty config"

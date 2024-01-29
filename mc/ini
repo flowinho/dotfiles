@@ -83,11 +83,11 @@ editor_backup_extension=~
 editor_filesize_threshold=64M
 editor_stop_format_chars=-+*\\,.;:&>
 mcview_eof=
-skin=dracula
+skin=gotar
 
 [Layout]
 output_lines=0
-left_panel_size=115
+left_panel_size=141
 top_panel_size=0
 message_visible=false
 keybar_visible=true
@@ -124,6 +124,7 @@ xterm=
 xterm-new=
 
 screen=
+screen-256color=
 
 [Panels]
 show_mini_info=true
@@ -150,6 +151,6 @@ simple_swap=false
 
 [Panelize]
 Geänderte Git-Dateien=git ls-files --modified
-Nach *.orig nach dem Patchen suchen=find . -name \\*.orig -print
-Nach dem Patchen nach Ablehnungen suchen=find . -name \\*.rej -print
 SUID- und SGID-Programme suchen=find . \\( \\( -perm -04000 -a -perm /011 \\) -o \\( -perm -02000 -a -perm /01 \\) \\) -print
+Nach dem Patchen nach Ablehnungen suchen=find . -name \\*.rej -print
+Nach *.orig nach dem Patchen suchen=find . -name \\*.orig -print
