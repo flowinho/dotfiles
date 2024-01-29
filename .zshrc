@@ -80,3 +80,5 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 alias resampleImage=convert -strip -interlace Plane -quality 70% -sampling-factor 4:2:0 -define jpeg:dct-method=float
+export PATH="/opt/homebrew/opt/ruby@3.0/bin:$PATH"
+export PATH="$HOME/.gem/ruby/3.0.0/bin:$PATH"
