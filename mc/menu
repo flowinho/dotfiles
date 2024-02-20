@@ -22,9 +22,9 @@
 	echo -n "Name of the compressed file w/o extension: [$Pwd]: "
 	read tar
 	[ "$tar"x = x ] && tar="$Pwd"
-	echo -n "Recipient mail adress: [mail@florian-s.org]: "
+	echo -n "Recipient mail adress: [mail@florianschuttkowski.com]: "
 	read recp
-	[ "$recp"x = x ] && recp="mail@florian-s.org"
+	[ "$recp"x = x ] && recp="mail@florianschuttkowski.com"
 	cd .. && \
 	tar --use-compress-program="pigz --best --recursive" -cvf $tar.tar.gz $Pwd && \
 	gpg -ear $recp -o $tar.tar.gz.gpg $tar.tar.gz && \
@@ -40,9 +40,9 @@
 	done
 
 4	Compress and encrypt tagged files into separate archives (PIGZ+GPG)
-	echo -n "Recipient mail adress: [mail@florian-s.org]: "
+	echo -n "Recipient mail adress: [mail@florianschuttkowski.com]: "
 	read recp
-	[ "$recp"x = x ] && recp="mail@florian-s.org"
+	[ "$recp"x = x ] && recp="mail@florianschuttkowski.com"
 	for i in %t
 	do
 		
