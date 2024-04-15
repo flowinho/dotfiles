@@ -16,5 +16,3 @@ alias compress='tar --use-compress-program="pigz -k -9" -cvf'
 alias untar='tar -xvf'
 alias fzf='fzf --preview "bat --color=always --line-range :50 {}"'
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
