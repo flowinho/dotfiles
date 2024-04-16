@@ -53,22 +53,35 @@
 		echo "$name.tar.gz" created.
 	done
 
-5	Decompress tar.gz to current directory
+5	Decrypt tagged gpg files
+	for i in %t
+	do
+		name=`basename "$i" .gpg`
+		gpg -d $i > $name
+	done
+
+6	Decompress tar.gz to current directory
 	tar -xvzf %s
 
-6	Analyze store of current directory
+7	Decompress tagged tar.gz to current directory
+	for i in %t
+	do
+		tar -xvzf $i
+	done
+
+7	Analyze store of current directory
 	ncdu %d
 
-7	Find duplicates in current directory
+8	Find duplicates in current directory
 	rmlint %d
 
-8	Open current file(s) in NeoVIM	
+9	Open current file(s) in NeoVIM	
 	nvim %s
 
-9	Open current directory in system file-manager
+10	Open current directory in system file-manager
 	xdg-open %d
 
-10	Open current file(s) in system application
+11	Open current file(s) in system application
 	xdg-open %s
 
 
