@@ -1,0 +1,101 @@
+#
+# ▒█▀▀▀ █░░ █▀▀█ █▀▀█ ░▀░ █▀▀█ █▀▀▄ 　 ▒█▀▀▀█ █▀▀ █░░█ █░░█ ▀▀█▀▀ ▀▀█▀▀ █░█ █▀▀█ █░░░█ █▀▀ █░█ ░▀░ 
+# ▒█▀▀▀ █░░ █░░█ █▄▄▀ ▀█▀ █▄▄█ █░░█ 　 ░▀▀▀▄▄ █░░ █▀▀█ █░░█ ░░█░░ ░░█░░ █▀▄ █░░█ █▄█▄█ ▀▀█ █▀▄ ▀█▀ 
+# ▒█░░░ ▀▀▀ ▀▀▀▀ ▀░▀▀ ▀▀▀ ▀░░▀ ▀░░▀ 　 ▒█▄▄▄█ ▀▀▀ ▀░░▀ ░▀▀▀ ░░▀░░ ░░▀░░ ▀░▀ ▀▀▀▀ ░▀░▀░ ▀▀▀ ▀░▀ ▀▀▀
+#
+#                          Copyright 2023 Florian Schuttkowski, Licensed GPL3
+#                    For additional information, visit https://github.com/flowinho
+#
+# ======================%%========================%%==========================%%=====================
+	
+1	Compress the current subdirectory (PIGZ)
+	Pwd=`basename %d /`
+	echo -n "Name of the compressed file w/o extension: [$Pwd]: "
+	read tar
+	[ "$tar"x = x ] && tar="$Pwd"
+    cd .. && \
+	tar --use-compress-program="pigz --best --recursive" -cvf $tar.tar.gz $Pwd && \
+	echo "../$tar.tar.gz" created.
+
+2	Compress & encrypt the current subdirectory (PIGZ+GPG)
+	Pwd=`basename %d /`
+	echo -n "Name of the compressed file w/o extension: [$Pwd]: "
+	read tar
+	[ "$tar"x = x ] && tar="$Pwd"
+	echo -n "Recipient mail adress: [mail@florianschuttkowski.com]: "
+	read recp
+	[ "$recp"x = x ] && recp="mail@florianschuttkowski.com"
+	cd .. && \
+	tar --use-compress-program="pigz --best --recursive" -cvf $tar.tar.gz $Pwd && \
+	gpg -ear $recp -o $tar.tar.gz.gpg $tar.tar.gz && \
+	rm $tar.tar.gz && \
+	echo "../$tar.tar.gz.asc" created.
+
+3	Compress tagged files into separate archives (PIGZ)
+	for i in %t
+	do
+		name=`basename "$i"`
+		tar --use-compress-program="pigz --best --recursive" -cvf $name.tar.gz $i && \
+		echo "$name.tar.gz" created.
+	done
+
+4	Compress and encrypt tagged files into separate archives (PIGZ+GPG)
+	echo -n "Recipient mail adress: [mail@florianschuttkowski.com]: "
+	read recp
+	[ "$recp"x = x ] && recp="mail@florianschuttkowski.com"
+	for i in %t
+	do
+		
+		name=`basename "$i"`
+		tar --use-compress-program="pigz --best --recursive" -cvf $name.tar.gz $i && \
+		gpg -ear $recp -o $name.tar.gz.gpg $name.tar.gz && \
+		rm $name.tar.gz && \
+		echo "$name.tar.gz" created.
+	done
+
+5	Decompress tar.gz to current directory
+	tar -xvzf %s
+
+6	Analyze store of current directory
+	ncdu %d
+
+7	Find duplicates in current directory
+	rmlint %d
+
+8	Open current file(s) in NeoVIM	
+	nvim %s
+
+9	Open current directory in system file-manager
+	xdg-open %d
+
+10	Open current file(s) in system application
+	xdg-open %s
+
+
+# Helper Notes
+#
+# filename=$(basename -- "%s")
+# extension="${filename##*.}"
+# filename="${filename%.*}"
+# echo -n "extension detected [$extension], filename is [$filename]"
+##############################################################################
+#   %%  The % character
+#   %f  The current file (if non-local vfs, file will be copied locally and
+#                         %f will be full path to it)
+#   %p  The current file
+#   %d  The current working directory
+#   %s  "Selected files"; the tagged files if any, otherwise the current file
+#   %t  Tagged files
+#   %u  Tagged files (and they are untagged on return from expand_format)
+#   %view Runs the commands and pipes standard output to the view command
+#   If %view is immediately followed by '{', recognize keywords
+#   ascii, hex, nroff and unform
+#
+#   If the format letter is in uppercase, it refers to the other panel
+#
+#   With a number followed the % character you can turn quoting on (default)
+#   and off. For example:
+#   %f    quote expanded macro
+#   %1f   ditto
+#   %0f   don't quote expanded macro
+##############################################################################
