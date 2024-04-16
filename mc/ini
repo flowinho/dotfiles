@@ -85,9 +85,15 @@ editor_stop_format_chars=-+*\\,.;:&>
 mcview_eof=
 skin=dracula
 
+fish_directory_timeout=900
+
 [Layout]
 output_lines=0
+<<<<<<< HEAD
 left_panel_size=132
+=======
+left_panel_size=135
+>>>>>>> b30a373c3d9b4b1dc01aa185b76213119062579d
 top_panel_size=0
 message_visible=true
 keybar_visible=true
@@ -110,11 +116,15 @@ autodetect_codeset=
 clipboard_store=
 clipboard_paste=
 
+spell_language=en
+
 [Colors]
 base_color=
 screen-256color=
 color_terminals=
 xterm-kitty=
+
+screen=
 
 [Panels]
 show_mini_info=true
@@ -139,6 +149,12 @@ select_flags=6
 
 [Panelize]
 Geänderte Git-Dateien=git ls-files --modified
+<<<<<<< HEAD
 SUID- und SGID-Programme suchen=find . \\( \\( -perm -04000 -a -perm /011 \\) -o \\( -perm -02000 -a -perm /01 \\) \\) -print
 Nach *.orig nach dem Patchen suchen=find . -name \\*.orig -print
 Nach dem Patchen nach Ablehnungen suchen=find . -name \\*.rej -print
+=======
+Nach *.orig nach dem Patchen suchen=find . -name \\*.orig -print
+Nach dem Patchen nach Ablehnungen suchen=find . -name \\*.rej -print
+SUID- und SGID-Programme suchen=find . \\( \\( -perm -04000 -a -perm /011 \\) -o \\( -perm -02000 -a -perm /01 \\) \\) -print
+>>>>>>> b30a373c3d9b4b1dc01aa185b76213119062579d
