@@ -2,9 +2,16 @@
 " Install plugins using :PlugInstall
 
 call plug#begin()
-	Plug 'ryanoasis/vim-devicons'
-	Plug 'dracula/vim'
-	Plug 'preservim/vim-markdown'
+	Plug 'ryanoasis/vim-devicons'							" Display nice icons inside vim and it's plugins, needs a NerdFont to be installed.
+	Plug 'dracula/vim'										" Dracula color theme for vim.
+	Plug 'preservim/vim-markdown'							" Syntax Highlighting Support for Markdown.
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }		" FZF Plugin to quickly navigate through files with :Files
+	Plug 'junegunn/fzf.vim'									" See line above
+	Plug 'preservim/nerdtree'								" Sidebar to show directory contents
+	Plug 'vim-airline/vim-airline'							" Fancier statusline that diplays more information
+	Plug 'vim-airline/vim-airline-themes'					" Theme Repo for Airline to be able to use dracula theme
+	Plug 'Xuyuanp/nerdtree-git-plugin'						" Show changed files in Nerdtree
+	Plug 'airblade/vim-gitgutter'							" Show per-line-changes in current open file.
 call plug#end()
 
 :set number				" Display line numbers in front of the lines.
@@ -27,5 +34,19 @@ call plug#end()
 :set list
 :set clipboard+=unnamedplus
 
-au ColorScheme * hi Normal ctermbg=None
-:colorscheme dracula
+" Configure NerdTree
+autocmd VimEnter * NERDTree	" Open Nerdtree when opening vim
+
+" Toggle Nerdtree when pressing F2
+map <F2> :NERDTreeToggle<CR>	
+let NERDTreeWinSize=48				" NerdTree Window width
+let NERDTreeWinPos="left"			" Position NerdTree on the left side
+let NERDTreeShowHidden=1			" Configures NerdTree to show hidden files
+let NERDTreeAutoDeleteBuffer=1
+
+" Configure Airline
+:let g:airline_theme='dracula'		" Set Airline Theme to Dracula
+let g:airline_powerline_fonts = 1	" Tell Airline to use powerline fonts to support dev-icons
+
+au ColorScheme * hi Normal ctermbg=None	" Reset NVIM color-theme to prepare for dracula
+:colorscheme dracula					" Set Dracula as color scheme for nvim
