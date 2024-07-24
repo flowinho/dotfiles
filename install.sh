@@ -9,7 +9,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 # Copy Brewfile to home-folder to execute brew bundle 
 cp Brewfile-Work ~/Brewfile
-brew bundle
+brew bundle install
 
 # Install powerline10k and fonts
 wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf

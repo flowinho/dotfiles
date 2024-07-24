@@ -43,11 +43,11 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 ### Copy Brewfile and Execute Brew Bundle
 
-The script copies the `Brewfile-Work` to the home folder and uses `brew bundle` to install the applications and dependencies listed in the Brewfile.
+The script copies the `Brewfile-Work` to the home folder and uses `brew bundle install` to install the applications and dependencies listed in the Brewfile.
 
 ```sh
 cp Brewfile-Work ~/Brewfile
-brew bundle
+brew bundle install
 ```
 
 ### Install Powerlevel10k Theme and Fonts
