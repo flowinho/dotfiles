@@ -12,6 +12,7 @@ call plug#begin()
 	Plug 'vim-airline/vim-airline-themes'					" Theme Repo for Airline to be able to use dracula theme
 	Plug 'Xuyuanp/nerdtree-git-plugin'						" Show changed files in Nerdtree
 	Plug 'airblade/vim-gitgutter'							" Show per-line-changes in current open file.
+	Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 :set number				" Display line numbers in front of the lines.
@@ -49,4 +50,5 @@ let NERDTreeAutoDeleteBuffer=1
 let g:airline_powerline_fonts = 1	" Tell Airline to use powerline fonts to support dev-icons
 
 au ColorScheme * hi Normal ctermbg=None	" Reset NVIM color-theme to prepare for dracula
-:colorscheme dracula					" Set Dracula as color scheme for nvim
+:colorscheme nord
+":colorscheme dracula " Set Dracula as color scheme for nvim
