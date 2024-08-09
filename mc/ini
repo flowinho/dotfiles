@@ -117,6 +117,7 @@ base_color=
 tmux-256color=
 color_terminals=
 xterm-kitty=
+screen-256color=
 
 [Panels]
 show_mini_info=true
@@ -137,10 +138,25 @@ filetype_mode=true
 permission_mode=false
 torben_fj_mode=false
 quick_search_mode=2
-select_flags=6
+select_flags=4
+
+[FindFile]
+file_case_sens=false
+file_shell_pattern=true
+file_find_recurs=true
+follow_symlinks=false
+file_skip_hidden=false
+file_all_charsets=false
+content_case_sens=true
+content_regexp=false
+content_first_hit=false
+content_whole_words=false
+content_all_charsets=false
+ignore_dirs_enable=true
+ignore_dirs=
 
 [Panelize]
-Nach *.orig nach dem Patchen suchen=find . -name \\*.orig -print
-SUID- und SGID-Programme suchen=find . \\( \\( -perm -04000 -a -perm /011 \\) -o \\( -perm -02000 -a -perm /01 \\) \\) -print
-Nach dem Patchen nach Ablehnungen suchen=find . -name \\*.rej -print
 Geänderte Git-Dateien=git ls-files --modified
+Nach dem Patchen nach Ablehnungen suchen=find . -name \\*.rej -print
+SUID- und SGID-Programme suchen=find . \\( \\( -perm -04000 -a -perm /011 \\) -o \\( -perm -02000 -a -perm /01 \\) \\) -print
+Nach *.orig nach dem Patchen suchen=find . -name \\*.orig -print
