@@ -30,3 +30,5 @@ source /opt/homebrew/opt/chruby/share/chruby/chruby.sh                          
 source $(brew --prefix)/opt/chruby/share/chruby/auto.sh >> ~/.zshrc
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -f /opt/homebrew/share/forgit/forgit.plugin.zsh ] && source /opt/homebrew/share/forgit/forgit.plugin.zsh
+
+
