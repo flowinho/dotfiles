@@ -17,7 +17,7 @@
 	tar --use-compress-program="pigz --best --recursive" -cvf $tar.tar.gz $Pwd && \
 	echo "../$tar.tar.gz" created.
 
-2	Compress & encrypt the current subdirectory (PIGZ+GPG)
+2	Comp. + encr.  the current subdirectory (PIGZ+GPG)
 	Pwd=`basename %d /`
 	echo -n "Name of the compressed file w/o extension: [$Pwd]: "
 	read tar
@@ -31,7 +31,22 @@
 	rm $tar.tar.gz && \
 	echo "../$tar.tar.gz.asc" created.
 
-3	Compress tagged files into separate archives (PIGZ)
+3	Comp. + encr.  the current subdirectory (PIGZ+AGE)
+	Pwd=`basename %d /`
+	echo -n "Name of the compressed file w/o extension: [$Pwd]: "
+	read tar
+	[ "$tar"x = x ] && tar="$Pwd"
+	echo -n "Recipient key: [age173vscrxxsndu9xzsy6jt9h7gzf6hr8pd53g5fguu7x36r27l8vqsv6qt5v]: "
+	read recp
+	[ "$recp"x = x ] && recp="age173vscrxxsndu9xzsy6jt9h7gzf6hr8pd53g5fguu7x36r27l8vqsv6qt5v"
+	cd .. && \
+	tar --use-compress-program="pigz --best --recursive" -cvf $tar.tar.gz $Pwd && \
+	age -r $recp $tar.tar.gz > $tar.tar.gz.age && \
+	rm $tar.tar.gz && \
+	echo "../$tar.tar.gz.age" created.
+
+
+4	Compress tagged files into separate archives (PIGZ)
 	for i in %t
 	do
 		name=`basename "$i"`
@@ -39,7 +54,7 @@
 		echo "$name.tar.gz" created.
 	done
 
-4	Compress and encrypt tagged files into separate archives (PIGZ+GPG)
+5	Comp. + encr. tagged files into separate archives (PIGZ+GPG)
 	echo -n "Recipient mail adress: [mail@florianschuttkowski.com]: "
 	read recp
 	[ "$recp"x = x ] && recp="mail@florianschuttkowski.com"
@@ -53,35 +68,46 @@
 		echo "$name.tar.gz" created.
 	done
 
-5	Decrypt tagged gpg files
+6	Comp. + encr. tagged files into separate archives (PIGZ+AGE)
+	recp="age173vscrxxsndu9xzsy6jt9h7gzf6hr8pd53g5fguu7x36r27l8vqsv6qt5v"
+	for i in %t
+	do
+		name=`basename "$i"`
+		tar --use-compress-program="pigz --best --recursive" -cvf $name.tar.gz $i && \
+		age -r $recp $name.tar.gz > $name.tar.gz.age && \
+		rm $name.tar.gz && \
+		echo "$name.tar.gz.age" created.
+	done
+
+7	Decrypt tagged gpg files
 	for i in %t
 	do
 		name=`basename "$i" .gpg`
 		gpg -d $i > $name
 	done
 
-6	Decompress tar.gz to current directory
+8	Decompress tar.gz to current directory
 	tar -xvzf %s
 
-7	Decompress tagged tar.gz to current directory
+9	Decompress tagged tar.gz to current directory
 	for i in %t
 	do
 		tar -xvzf $i
 	done
 
-7	Analyze store of current directory
+10	Analyze store of current directory
 	ncdu %d
 
-8	Find duplicates in current directory
+11	Find duplicates in current directory
 	rmlint %d
 
-9	Open current file(s) in NeoVIM	
+12	Open current file(s) in NeoVIM	
 	nvim %s
 
-10	Open current directory in system file-manager
+13	Open current directory in system file-manager
 	xdg-open %d
 
-11	Open current file(s) in system application
+14	Open current file(s) in system application
 	xdg-open %s
 
 
